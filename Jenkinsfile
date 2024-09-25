@@ -1,7 +1,10 @@
-echo "# test_jen" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/zdanc/test_jen.git
-git push -u origin main
+pipeline {
+    agent { docker 'maven:3.3.3' }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
+    }
+}
